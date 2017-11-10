@@ -1,39 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import App from './App';
+import counterApp from './reducers';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD':
-      state = state + action.payload;
-      break;
-    case 'SUBTRACT':
-      state = state - action.payload;
-      break;
-  }
-  return state;
-};
-const store = createStore(reducer, 1);
+const store = createStore(counterApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const rootElement = document.getElementById('root');
 
-store.subscribe(() => {
-  console.log("Store update!", store.getState())
-})
-store.dispatch({
-    type: 'ADD',
-    payload: 10
-});
 
-store.dispatch({
-    type: 'ADD',
-    payload: 30
-});
+ReactDOM.render(
+    <Provider store = {store}>
+        <App />
+    </Provider>,rootElement
+);
 
-store.dispatch({
-    type: 'ADD',
-    payload: 20
-});
-
-let rootElement = document.getElementById('root');
-
-ReactDOM.render(<App/>, rootElement);
+if (module.hot) {
+    module.hot.accept();
+}
