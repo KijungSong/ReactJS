@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf build public/bundle.js",
     "build": "babel server --out-dir build && %cd%/node_modules/.bin/webpack.cmd",
-    "start": "node %cd%/build/main.js NODE_ENV=production ",
-    "development": "node %cd%/build/main.js NODE_ENV=development "
+    "start": "set NODE_ENV=production&&node %cd%/build/main.js ",
+    "development": "set NODE_ENV=development&&node %cd%/build/main.js"
   },
   "author": "",
   "license": "ISC",
