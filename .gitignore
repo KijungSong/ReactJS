@@ -6,3 +6,8 @@ Window_Template_Express_With/build/
 
 Window_Template_Redux/node_modules/
 Window_Template_Redux/build/
+
+
+# file: ~/.gitignore_global
+.DS_Store
+.idea
